@@ -1,3 +1,7 @@
 from django.urls import path
 
-urlpatterns = []
+from webportal.views import *
+
+urlpatterns = [
+    path("", homepage),
+]
