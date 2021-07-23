@@ -13,8 +13,8 @@ class Meme(models.Model):
         verbose_name_plural = "Memes"
 
     time = models.DateTimeField(verbose_name="Time", auto_now_add=True)
-    username = models.CharField(max_length=25, verbose_name="Torn Username", unique=True)
-    torn_id = models.CharField(max_length=10, verbose_name="Torn ID", unique=True)
+    username = models.CharField(max_length=25, verbose_name="Torn Username")
+    torn_id = models.CharField(max_length=10, verbose_name="Torn ID")
     caption = models.CharField(max_length=100, verbose_name="Caption", blank=True, null=True)
     image_link = models.URLField(verbose_name="Image URL")
 
