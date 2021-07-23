@@ -11,7 +11,7 @@ class MemeAdmin(admin.ModelAdmin):
 
 class ReactionLogAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
-    list_display = ("time", "torn_id", "meme__id", "reaction")
+    list_display = ("time", "torn_id", "meme_id", "reaction")
     search_fields = ("tord_id",)
 
 
