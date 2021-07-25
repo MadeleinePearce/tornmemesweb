@@ -70,3 +70,55 @@ def loginapi(request):
         response["message"] = "Invalid parameters"
 
     return JsonResponse(response)
+
+
+@csrf_exempt
+def memereactions(request):
+    response = {"status": 500, "message": "FAILED", "result": None}
+    if (
+        request.method == "POST"
+        and check_params(request.POST, ["apikey", "meme_id", "reaction"])
+        and str(request.POST["meme_id"]).isdigit()
+        and request.POST["reaction"] in ["U", "D"]
+    ):
+        try:
+            m = Meme.objects.get(pk=int(request.POST["meme_id"]))
+        except:
+            m = None
+            response["status"] = 404
+            response["message"] = "Invalid Meme ID"
+        try:
+            p = TornPlayer.objects.get(apikey=request.POST["apikey"])
+        except:
+            p = None
+            response["status"] = 403
+            response["message"] = "Invalid API key"
+        if m and p:
+            try:
+                log = ReactionLog.objects.get(meme=m, tornplayer=p)
+            except:
+                log = None
+            if log:
+                if log.reaction == "U":
+                    m.likes -= 1
+                    m.save()
+                elif log.reaction == "D":
+                    m.dislikes -= 1
+                    m.save()
+                log.delete()
+            log = ReactionLog(meme=m, tornplayer=p, reaction=request.POST["reaction"])
+            if log.reaction == "U":
+                m.likes += 1
+                m.save()
+            elif log.reaction == "D":
+                m.dislikes += 1
+                m.save()
+            log.save()
+            response["status"] = 200
+            response["message"] = "SUCCESS"
+            response["result"] = {"meme_id": m.id, "likes": m.likes, "dislikes": m.dislikes}
+    else:
+        response["status"] = 400
+        response["message"] = "Invalid parameters"
+
+    return JsonResponse(response)

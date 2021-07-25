@@ -46,11 +46,11 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
                         </div>
                     </div>
                 </div>
@@ -67,11 +67,11 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
                         </div>
                     </div>
                 </div>
@@ -88,11 +88,11 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
                         </div>
                     </div>
                 </div>
@@ -109,11 +109,11 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
                         </div>
                     </div>
                 </div>
@@ -130,11 +130,11 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
                         </div>
                     </div>
                 </div>
