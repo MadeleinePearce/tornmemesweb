@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 from django.db import models
 from django.core.exceptions import ValidationError
 
@@ -12,10 +14,13 @@ class TornPlayer(models.Model):
         verbose_name = "Torn Player"
         verbose_name_plural = "Torn Players"
 
+    def generate_apikey():
+        return str(uuid4())
+
     time = models.DateTimeField(verbose_name="Time", auto_now_add=True)
     username = models.CharField(max_length=25, verbose_name="Torn Username", unique=True)
     torn_id = models.CharField(max_length=10, verbose_name="Torn ID", unique=True)
-    apikey = models.CharField(max_length=25, verbose_name="Custom API Key", unique=True)
+    apikey = models.CharField(max_length=50, verbose_name="TornMemes API Key", unique=True, default=generate_apikey)
 
     def __str__(self):
         return self.username + f" [{self.torn_id}]"
@@ -34,7 +39,7 @@ class Meme(models.Model):
     dislikes = models.PositiveIntegerField(verbose_name="Dislikes", default=0)
 
     def __str__(self):
-        return f"Meme ({self.caption}) [{self.time.strftime('%H:%M:%S %d/%m/%Y')}]"
+        return f"{self.caption[:10]} [{self.time.strftime('%H:%M:%S %d/%m/%Y')}]"
 
 
 class ReactionLog(models.Model):

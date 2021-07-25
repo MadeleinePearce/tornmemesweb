@@ -1,6 +1,15 @@
 import math
-from webportal.models import *
+import requests
+
 from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from webportal.models import *
+
+
+def check_params(r, p):
+    return all(list(map(lambda x: x in r and r[x].strip() != "", p)))
 
 
 def homepage(request):
@@ -24,3 +33,40 @@ def homepage(request):
             "total_pages": _total_pages,
         },
     )
+
+
+@csrf_exempt
+def loginapi(request):
+    response = {"status": 500, "message": "FAILED", "result": None}
+    if request.method == "POST" and check_params(request.POST, ["tornapikey"]):
+        res = requests.get(
+            "https://api.torn.com/user/",
+            params={"selections": "profile", "key": request.POST["tornapikey"], "comment": "TornMemes"},
+        )
+        try:
+            res = res.json()
+        except:
+            res = None
+            response["status"] = 404
+            response["message"] = "Invalid response received from TORN API"
+        if res:
+            if "error" in res:
+                response["status"] = 404
+                response["message"] = res["error"].get("error") or "Unknown Error"
+            elif "name" in res and "player_id" in res:
+                try:
+                    player = TornPlayer.objects.get(torn_id=res["player_id"])
+                except:
+                    player = TornPlayer(username=res["name"], torn_id=res["player_id"])
+                    player.save()
+                response["status"] = 200
+                response["message"] = "SUCCESS"
+                response["result"] = {"apikey": player.apikey, "username": player.username, "torn_id": player.torn_id}
+            else:
+                response["status"] = 404
+                response["message"] = "Failed to identify player"
+    else:
+        response["status"] = 400
+        response["message"] = "Invalid parameters"
+
+    return JsonResponse(response)

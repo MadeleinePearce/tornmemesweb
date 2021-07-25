@@ -11,14 +11,14 @@ class TornPlayerAdmin(admin.ModelAdmin):
 
 class MemeAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
-    list_display = ("time", "tornplayer", "image_link")
-    search_fields = ("tornplayer__username", "tornplayer__torn_id", "image_link")
+    list_display = ("time", "tornplayer", "caption", "image_link")
+    search_fields = ("tornplayer__username", "tornplayer__torn_id", "image_link", "caption")
 
 
 class ReactionLogAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
     list_display = ("time", "tornplayer", "meme", "reaction")
-    search_fields = ("tornplayer__torn_id",)
+    search_fields = ("tornplayer__torn_id", "tornplayer__username", "meme__caption")
 
 
 admin.site.register(TornPlayer, TornPlayerAdmin)

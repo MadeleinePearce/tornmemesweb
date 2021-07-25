@@ -1,4 +1,3 @@
 django
-gunicorn
-django-cors-headers
 requests
+django-cors-headers

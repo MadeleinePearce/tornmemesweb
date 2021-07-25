@@ -10,14 +10,15 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" />
     </head>
 
-    <body style="background-color: #C5C5C5;">
-        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar" style="background: linear-gradient(0deg,#0C1014 0%,#344657 100%); box-shadow: 0 1px 0 #ffffff0d;">
+    <body style="background-color: #c5c5c5;">
+        <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar" style="background: linear-gradient(0deg, #0c1014 0%, #344657 100%); box-shadow: 0 1px 0 #ffffff0d;">
             <div class="container">
                 <a class="navbar-brand logo" href="#">TornMemes</a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li class="nav-item" id="login-button"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
+                        <li class="nav-item" id="profile-button" style="display: none;"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#profileModal">Profile</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,88 +39,108 @@
             <div class="card-group">
                 {% for meme in memes_group1 %}
                 <div class="card p-2" style="background-color: #f5f5f5;">
-                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);"/>
+                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);" />
                     <div class="card-body text-center">
-                        <p class="card-text"><strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br>{{ meme.caption }}</p>
+                        <p class="card-text">
+                            <strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br />
+                            {{ meme.caption }}
+                        </p>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
-                            <button class="btn btn-primary btn-warning" type="button"><a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a></button>
+                            <button class="btn btn-primary btn-warning" type="button">
+                                <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
+                            </button>
                             <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% if memes_group2 %}
+            {% endif %} {% if memes_group2 %}
             <div class="card-group">
                 {% for meme in memes_group2 %}
                 <div class="card p-2" style="background-color: #f5f5f5;">
-                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);"/>
+                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);" />
                     <div class="card-body text-center">
-                        <p class="card-text"><strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br>{{ meme.caption }}</p>
+                        <p class="card-text">
+                            <strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br />
+                            {{ meme.caption }}
+                        </p>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
-                            <button class="btn btn-primary btn-warning" type="button"><a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a></button>
+                            <button class="btn btn-primary btn-warning" type="button">
+                                <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
+                            </button>
                             <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% if memes_group3 %}
+            {% endif %} {% if memes_group3 %}
             <div class="card-group">
                 {% for meme in memes_group3 %}
                 <div class="card p-2" style="background-color: #f5f5f5;">
-                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);"/>
+                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);" />
                     <div class="card-body text-center">
-                        <p class="card-text"><strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br>{{ meme.caption }}</p>
+                        <p class="card-text">
+                            <strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br />
+                            {{ meme.caption }}
+                        </p>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
-                            <button class="btn btn-primary btn-warning" type="button"><a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a></button>
+                            <button class="btn btn-primary btn-warning" type="button">
+                                <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
+                            </button>
                             <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% if memes_group4 %}
+            {% endif %} {% if memes_group4 %}
             <div class="card-group">
                 {% for meme in memes_group4 %}
                 <div class="card p-2" style="background-color: #f5f5f5;">
-                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);"/>
+                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);" />
                     <div class="card-body text-center">
-                        <p class="card-text"><strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br>{{ meme.caption }}</p>
+                        <p class="card-text">
+                            <strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br />
+                            {{ meme.caption }}
+                        </p>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
-                            <button class="btn btn-primary btn-warning" type="button"><a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a></button>
+                            <button class="btn btn-primary btn-warning" type="button">
+                                <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
+                            </button>
                             <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% if memes_group5 %}
+            {% endif %} {% if memes_group5 %}
             <div class="card-group">
                 {% for meme in memes_group5 %}
                 <div class="card p-2" style="background-color: #f5f5f5;">
-                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);"/>
+                    <img class="card-img-top w-100 d-block" src="{{ meme.image_link }}" data-bs-toggle="modal" data-bs-target="#memeModal" onclick="setMemeModal(this.src);" />
                     <div class="card-body text-center">
-                        <p class="card-text"><strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br>{{ meme.caption }}</p>
+                        <p class="card-text">
+                            <strong>{{ meme.tornplayer.username }} [{{ meme.tornplayer.torn_id }}]</strong><br />
+                            {{ meme.caption }}
+                        </p>
                         <div class="btn-group" role="group">
                             <button class="btn btn-primary btn-success" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; {{ meme.likes }}</button>
-                            <button class="btn btn-primary btn-warning" type="button"><a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a></button>
+                            <button class="btn btn-primary btn-warning" type="button">
+                                <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
+                            </button>
                             <button class="btn btn-primary btn-danger" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; {{ meme.dislikes }}</button>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
             </div>
-            {% endif %}
-            {% if memes_on_page == 0 %}
+            {% endif %} {% if memes_on_page == 0 %}
             <div class="row">
                 <div class="col text-center">
                     <h3>Sorry! We ran out of memes.</h3>
@@ -133,10 +154,10 @@
                         <li class="page-item active"><a class="page-link" id="current-page">0</a></li>
                         <li class="page-item disabled" id="next-button"><a id="next-button-link" class="page-link">Next</a></li>
                     </ul>
-                  </nav>
+                </nav>
             </section>
         </main>
-        <section class="portfolio-block website" style="background: linear-gradient(0deg,#0C1014 0%,#344657 100%); box-shadow: 0 1px 0 #ffffff0d;">
+        <section class="portfolio-block website" style="background: linear-gradient(0deg, #0c1014 0%, #344657 100%); box-shadow: 0 1px 0 #ffffff0d;">
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col text-center">
@@ -149,13 +170,17 @@
         </section>
         <footer class="page-footer">
             <h6>
-                Made with&nbsp;❤️ by<a target="_blank" style="text-decoration: none" href="https://www.torn.com/profiles.php?XID=2680763">XeN0N_2021</a>&amp;<a target="_blank" style="text-decoration: none" href="https://www.torn.com/profiles.php?XID=2695912">Apk-ash</a>
+                Made with&nbsp;❤️ by<a target="_blank" style="text-decoration: none;" href="https://www.torn.com/profiles.php?XID=2680763">XeN0N_2021</a>&amp;
+                <a target="_blank" style="text-decoration: none;" href="https://www.torn.com/profiles.php?XID=2695912">Apk-ash</a>
             </h6>
         </footer>
         <div class="modal fade" role="dialog" tabindex="-1" id="advertiseModal">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
-                    <div class="modal-header"><h5>Advertise in TornMemes</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-header">
+                        <h5>Advertise in TornMemes</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <div class="modal-body text-center">
                         <p style="padding-top: 1rem;">Advertise Here<br /></p>
                     </div>
@@ -167,7 +192,7 @@
                 <div class="modal-content">
                     <div class="modal-header"><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
                     <div class="modal-body text-center">
-                        <img id="meme-image-link" class="img-fluid" src="#">
+                        <img id="meme-image-link" class="img-fluid" src="#" />
                     </div>
                 </div>
             </div>
@@ -175,51 +200,64 @@
         <div class="modal fade" role="dialog" tabindex="-1" id="loginModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header"><h5>Login</h5><button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></div>
+                    <div class="modal-header">
+                        <h5>Login</h5>
+                        <button type="button" class="btn-close" id="close-login-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="col-form-label">Torn API Key:</label>
-                            <input type="text" class="form-control" id="torn-api-key">
+                            <input type="text" class="form-control" id="torn-api-key" name="torn-api-key" />
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="remember-me" onclick="toggleFlag($(this));" />
+                            <input type="text" value="false" id="remember-me-flag" hidden />
+                            <label class="form-check-label" for="remember-me">
+                                Remember Me
+                                <span data-toggle="tooltip" title="Saves the API key in your browser until you logout">
+                                    <i class="fa fa-question-circle"></i>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="alert fade show" id="alert-message">
+                            Welcome to TornMemes
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary">Submit</button>
+                        <button type="button" class="btn btn-secondary" onclick="authTornPlayer($('#torn-api-key').val(), $('#remember-me-flag').val());" id="login-button">Login</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- <script src="{% static 'js/script.min.js' %}"></script> -->
+        <div class="modal fade" role="dialog" tabindex="-1" id="profileModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Profile</h5>
+                        <button type="button" class="btn-close" id="close-profile-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label class="col-form-label">Torn User ID:</label>
+                            <input type="text" class="form-control" id="torn-user-id" readonly/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label">TornMemes API Key:</label>
+                            <input type="text" class="form-control" id="tornmemes-api-key" readonly/>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" onclick="handleLogout();" id="logout-button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
-            function setMemeModal(url){
-                $("#meme-image-link").attr("src", url);
-            }
             var total_pages = parseInt("{{ total_pages|escapejs }}");
             var memes_on_page = parseInt("{{ memes_on_page|escapejs }}");
-            const urlParams = new URLSearchParams(window.location.search);
-            if(total_pages === 0){
-                $('#pagination-ui').hide();
-            } else {
-                var current_page = parseInt(urlParams.get('page') || "1");
-                $("#current-page").html(current_page);
-                if(memes_on_page === 0){
-                    $("#prev-button").removeClass("disabled");
-                    $("#prev-button-link").attr('href', "/?page=" + (current_page - 1));
-                } else if(memes_on_page !== 0 && current_page === 1){
-                    if(current_page + 1 <= total_pages){
-                        $("#next-button").removeClass("disabled");
-                        $("#next-button-link").attr('href', "/?page=" + (current_page + 1));
-                    }
-                } else if(memes_on_page !== 0 && current_page > 1){
-                    $("#prev-button").removeClass("disabled");
-                    $("#prev-button-link").attr('href', "/?page=" + (current_page - 1));
-                    if(current_page + 1 <= total_pages){
-                        $("#next-button").removeClass("disabled");
-                        $("#next-button-link").attr('href', "/?page=" + (current_page + 1));
-                    }
-                }
-            }
         </script>
+        <script src="{% static 'js/script.min.js' %}"></script>
     </body>
 </html>
