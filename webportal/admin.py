@@ -5,8 +5,8 @@ from webportal.models import *
 
 class TornPlayerAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
-    list_display = ("username", "torn_id", "time")
-    search_fields = ("username", "torn_id")
+    list_display = ("username", "torn_id", "apikey", "time")
+    search_fields = ("username", "torn_id", "apikey")
 
 
 class MemeAdmin(admin.ModelAdmin):

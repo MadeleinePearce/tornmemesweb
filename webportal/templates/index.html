@@ -18,6 +18,7 @@
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#faqModal">FAQ</a></li>
                         <li class="nav-item" id="login-button"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a></li>
                         <li class="nav-item" id="profile-button" style="display: none;"><a class="nav-link" data-bs-toggle="modal" data-bs-target="#profileModal">Profile</a></li>
                     </ul>
@@ -47,11 +48,15 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button">
+                                <i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span>
+                            </button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button">
+                                <i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -68,11 +73,15 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button">
+                                <i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span>
+                            </button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button">
+                                <i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -89,11 +98,15 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button">
+                                <i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span>
+                            </button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button">
+                                <i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -110,11 +123,15 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button">
+                                <i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span>
+                            </button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button">
+                                <i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -131,11 +148,15 @@
                             {{ meme.caption }}
                         </p>
                         <div class="btn-group" role="group">
-                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button"><i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span></button>
+                            <button class="btn btn-primary btn-success" onclick="handleReaction('{{ meme.id|escapejs }}', 'like');" id="meme-id-{{ meme.id|escapejs }}-like-btn" type="button">
+                                <i class="fas fa-thumbs-up"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-likes">{{ meme.likes }}</span>
+                            </button>
                             <button class="btn btn-primary btn-warning" type="button">
                                 <a target="_blank" style="color: black;" href="https://www.torn.com/sendcash.php#/XID={{ meme.tornplayer.torn_id }}"> <i class="fas fa-dollar-sign"></i></a>
                             </button>
-                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button"><i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span></button>
+                            <button class="btn btn-primary btn-danger" onclick="handleReaction('{{ meme.id|escapejs }}', 'dislike');" id="meme-id-{{ meme.id|escapejs }}-dislike-btn" type="button">
+                                <i class="fas fa-thumbs-down"></i>&nbsp; <span id="meme-id-{{ meme.id|escapejs }}-dislikes">{{ meme.dislikes }}</span>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -168,7 +189,8 @@
                         </a>
                         {% endif %}
                         <h6 style="color: white;" class="p-2">
-                            <a href="#" style="text-decoration: none; color: white;" data-bs-toggle="modal" data-bs-target="#advertiseModal">Advertise Here</a> | <a href="/sponsors" style="text-decoration: none; color: white;">View All Sponsers</a>
+                            <a href="#" style="text-decoration: none; color: white;" data-bs-toggle="modal" data-bs-target="#advertiseModal">Advertise Here</a> |
+                            <a href="/sponsors" style="text-decoration: none; color: white;">View All Sponsors</a>
                         </h6>
                         {% if banner_ad_2 %}
                         <a target="_blank" href="{{ banner_ad_2.redirect_link }}">
@@ -193,15 +215,11 @@
                     </div>
                     <div class="modal-body">
                         <ul>
-                            <li>
-                                Banner Ad in TornMemes cost <strong>$300,000 TCD</strong> per day to run. If you want to show your banner for more than one day, please make sure to send money in any increment of $300,000
-                            </li>
+                            <li>Banner Ad in TornMemes cost <strong>$300,000 TCD</strong> per day to run. If you want to show your banner for more than one day, please make sure to send money in any increment of $300,000</li>
                             <li>
                                 Banner images should be related to Torn only
                             </li>
-                            <li>
-                                You will have to upload the banner image through the link below and send the money to <a href="https://www.torn.com/sendcash.php#/XID=2680763">XeN0N_2021</a>
-                            </li>
+                            <li>You will have to upload the banner image through the link below and send the money to <a href="https://www.torn.com/sendcash.php#/XID=2680763">XeN0N_2021</a></li>
                             <li>
                                 Banner must be 650x90 px. Supported formats are: jpeg, jpg, gif, png.
                             </li>
@@ -244,7 +262,8 @@
                                 The meme should not promote any kind of discrimination, harassment, obscene content or promotions.
                             </li>
                             <li>
-                                To submit your meme, we will need your special TornMemes API key. You can use your Torn API to login to TornMemes, we will then generate a key for you. You can find it in your 'Profile' after successful login (on right corner of the website).
+                                To submit your meme, we will need your special TornMemes API key. You can use your Torn API to login to TornMemes, we will then generate a key for you. You can find it in your 'Profile' after successful login
+                                (on right corner of the website).
                             </li>
                         </ul>
                     </div>
@@ -306,15 +325,89 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label class="col-form-label">Torn User ID:</label>
-                            <input type="text" class="form-control" id="torn-user-id" readonly/>
+                            <input type="text" class="form-control" id="torn-user-id" readonly />
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label">TornMemes API Key:</label>
-                            <input type="text" class="form-control" id="tornmemes-api-key" readonly/>
+                            <input type="text" class="form-control" id="tornmemes-api-key" readonly />
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" onclick="handleLogout();" id="logout-button">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="faqModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>FAQ</h5>
+                        <button type="button" class="btn-close" id="close-profile-modal" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="accordion accordion-flush" id="accordionFlushExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingOne">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                                        I am concerned about my Torn API key's security
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        We have made a system where we use your Torn API key just to authenticate and validate your identity. Upon verification, we create a special TornMemes API key for you, which is then used for all kinds of interaction in the entire website. We don't and we won't store or misuse your Torn API key.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingTwo">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+                                        How do you guys judge a meme?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        It's actually pretty simple. The meme should be original, awesome, and related to Torn. The meme which promotes any kind of discrimination, harassment, obscene content or promotions, will be directly rejected by our TornMemes staff.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingThree">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                                        I want to suggest something to improve TornMemes
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        We are constantly trying our best to improve TornMemes. We will be glad to hear your suggestions. You can post your thoughts directly on the forum post [<a href="">HERE</a>]
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingFour">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                                        What we can expect from TornMemes in future?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        If everything goes as planned and we start getting some good traffic on the platform. We are planning to launch weekly competitions, leaderboards, and many more cool features.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-headingFive">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                                        How can we support TornMemes?
+                                    </button>
+                                </h2>
+                                <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                                    <div class="accordion-body">
+                                        Aww thank you so much ❤️ You are doing more than enough by visiting this platform and/or uploading your amazing memes. If you like to do more for us, you can leave a like on the forum post [<a href="">HERE</a>], and you can also support the developer of TornMemes [<a href="https://www.torn.com/sendcash.php#/XID=2680763">HERE</a>] by rewarding some <strong>$$$ Torn City Dollars</strong>. Enjoy the memes and have a great day.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
