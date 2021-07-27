@@ -1,6 +1,9 @@
+import random
+import datetime
 from uuid import uuid4
 
 from django.db import models
+from django.utils import timezone
 from django.core.exceptions import ValidationError
 
 
@@ -51,3 +54,43 @@ class ReactionLog(models.Model):
     tornplayer = models.ForeignKey(TornPlayer, on_delete=models.CASCADE)
     meme = models.ForeignKey(Meme, on_delete=models.CASCADE)
     reaction = models.CharField(max_length=1, validators=[reaction_validator])
+
+
+class BannerAd(models.Model):
+    class Meta:
+        verbose_name = "Banner Ad"
+        verbose_name_plural = "Banner Ads"
+
+    created_at = models.DateTimeField(verbose_name="Created At", auto_now_add=True)
+    tornplayer = models.ForeignKey(TornPlayer, on_delete=models.CASCADE)
+    image_link = models.URLField(verbose_name="Image URL")
+    redirect_link = models.URLField(verbose_name="Redirect URL")
+    validity = models.PositiveIntegerField(verbose_name="Validity (Days)", default=1)
+
+    def __str__(self):
+        if timezone.now() > self.created_at + datetime.timedelta(days=self.validity):
+            return f"AD-{self.id} ({self.tornplayer.username}) [EXPIRED]"
+        else:
+            _r = (self.created_at + datetime.timedelta(days=self.validity)) - timezone.now()
+            return f"AD-{self.id} ({self.tornplayer.username}) [{_r.days} days remaining]"
+
+    @staticmethod
+    def get_valid_ads(n: int = None):
+        if n:
+            if len(BannerAd.objects.all()) > 1:
+                return random.choices(
+                    [
+                        ad
+                        for ad in BannerAd.objects.all()
+                        if timezone.now() <= ad.created_at + datetime.timedelta(days=ad.validity)
+                    ],
+                    k=n,
+                )
+            else:
+                return []
+        else:
+            return [
+                ad
+                for ad in BannerAd.objects.all()
+                if timezone.now() <= ad.created_at + datetime.timedelta(days=ad.validity)
+            ]

@@ -21,6 +21,13 @@ class ReactionLogAdmin(admin.ModelAdmin):
     search_fields = ("tornplayer__torn_id", "tornplayer__username", "meme__caption")
 
 
+class BannerAdAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at",)
+    list_display = ("created_at", "tornplayer", "validity")
+    search_fields = ("tornplayer__torn_id", "tornplayer__username")
+
+
 admin.site.register(TornPlayer, TornPlayerAdmin)
 admin.site.register(Meme, MemeAdmin)
 admin.site.register(ReactionLog, ReactionLogAdmin)
+admin.site.register(BannerAd, BannerAdAdmin)

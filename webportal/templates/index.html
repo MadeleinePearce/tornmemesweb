@@ -8,12 +8,13 @@
         <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css" />
+        <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     </head>
 
-    <body style="background-color: #c5c5c5;">
+    <body>
         <nav class="navbar navbar-dark navbar-expand-lg fixed-top bg-white portfolio-navbar" style="background: linear-gradient(0deg, #0c1014 0%, #344657 100%); box-shadow: 0 1px 0 #ffffff0d;">
             <div class="container">
-                <a class="navbar-brand logo" href="#">TornMemes</a>
+                <a class="navbar-brand logo" href="/">TornMemes</a>
                 <button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navbarNav"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
@@ -31,7 +32,7 @@
                             Welcome to&nbsp;<strong>TornMemes</strong>!<br />
                             upload TORN related memes and earn fame &amp; rewards.
                         </p>
-                        <a class="btn btn-secondary" role="button" href="#"><i class="fas fa-upload p-2"></i><span>Upload Memes</span><i class="fas fa-upload p-2"></i></a>
+                        <a class="btn btn-secondary" role="button" href="#" data-bs-target="#uploadModal" data-bs-toggle="modal"><i class="fas fa-upload p-2"></i><span>Upload Memes</span><i class="fas fa-upload p-2"></i></a>
                     </div>
                 </div>
             </section>
@@ -141,7 +142,7 @@
                 {% endfor %}
             </div>
             {% endif %} {% if memes_on_page == 0 %}
-            <div class="row">
+            <div class="portfolio-block">
                 <div class="col text-center">
                     <h3>Sorry! We ran out of memes.</h3>
                 </div>
@@ -161,28 +162,94 @@
             <div class="container">
                 <div class="row align-items-center">
                     <div class="col text-center">
-                        <img class="img-fluid" src="https://www.torn.com/signature.php?id=1&amp;user=2680763" />
-                        <a href="#" style="text-decoration: none; color: white;" data-bs-toggle="modal" data-bs-target="#advertiseModal"><h6 class="p-2">Advertise Here</h6></a>
-                        <img class="img-fluid" src="https://www.torn.com/signature.php?id=1&amp;user=2680763" />
+                        {% if banner_ad_1 %}
+                        <a target="_blank" href="{{ banner_ad_1.redirect_link }}">
+                            <img class="img-fluid" src="{{ banner_ad_1.image_link }}" />
+                        </a>
+                        {% endif %}
+                        <h6 style="color: white;" class="p-2">
+                            <a href="#" style="text-decoration: none; color: white;" data-bs-toggle="modal" data-bs-target="#advertiseModal">Advertise Here</a> | <a href="/sponsors" style="text-decoration: none; color: white;">View All Sponsers</a>
+                        </h6>
+                        {% if banner_ad_2 %}
+                        <a target="_blank" href="{{ banner_ad_2.redirect_link }}">
+                            <img class="img-fluid" src="{{ banner_ad_2.image_link }}" />
+                        </a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </section>
         <footer class="page-footer">
             <h6>
-                Made with&nbsp;❤️ by<a target="_blank" style="text-decoration: none;" href="https://www.torn.com/profiles.php?XID=2680763">XeN0N_2021</a>&amp;
-                <a target="_blank" style="text-decoration: none;" href="https://www.torn.com/profiles.php?XID=2695912">Apk-ash</a>
+                Copyright 2021 - TornMemes
             </h6>
         </footer>
         <div class="modal fade" role="dialog" tabindex="-1" id="advertiseModal">
-            <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5>Advertise in TornMemes</h5>
+                        <h5>Banner Ad Guidelines</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body text-center">
-                        <p style="padding-top: 1rem;">Advertise Here<br /></p>
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                Banner Ad in TornMemes cost <strong>$300,000 TCD</strong> per day to run. If you want to show your banner for more than one day, please make sure to send money in any increment of $300,000
+                            </li>
+                            <li>
+                                Banner images should be related to Torn only
+                            </li>
+                            <li>
+                                You will have to upload the banner image through the link below and send the money to <a href="https://www.torn.com/sendcash.php#/XID=2680763">XeN0N_2021</a>
+                            </li>
+                            <li>
+                                Banner must be 650x90 px. Supported formats are: jpeg, jpg, gif, png.
+                            </li>
+                            <li>
+                                Once approved by the TornMemes staffs, the banner ad will start showing on the website
+                            </li>
+                            <li>
+                                Any mugging incidents after sending the money will automatically reject your requests
+                            </li>
+                            <li>
+                                No Refund
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-secondary">Proceed</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" role="dialog" tabindex="-1" id="uploadModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5>Upload Meme Guidelines</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul>
+                            <li>
+                                The meme must be Torn related
+                            </li>
+                            <li>
+                                The preferred dimensions for the meme image is 500x500 px
+                            </li>
+                            <li>
+                                The meme should be your original work. We won't accept the same meme concept with different templates.
+                            </li>
+                            <li>
+                                The meme should not promote any kind of discrimination, harassment, obscene content or promotions.
+                            </li>
+                            <li>
+                                To submit your meme, we will need your special TornMemes API key. You can use your Torn API to login to TornMemes, we will then generate a key for you. You can find it in your 'Profile' after successful login (on right corner of the website).
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#" class="btn btn-secondary">Proceed</a>
                     </div>
                 </div>
             </div>

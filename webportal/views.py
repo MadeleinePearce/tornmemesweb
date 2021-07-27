@@ -20,6 +20,7 @@ def homepage(request):
         _memes = _memes[15 * (_page - 1) : 15 * _page]
     else:
         _memes = _memes[:15]
+    _ads = BannerAd.get_valid_ads(n=2)
     return render(
         request,
         "index.html",
@@ -31,7 +32,24 @@ def homepage(request):
             "memes_group5": _memes[12:15],
             "memes_on_page": len(_memes),
             "total_pages": _total_pages,
+            "banner_ad_1": _ads[0] if _ads else None,
+            "banner_ad_2": _ads[1] if _ads else None,
         },
+    )
+
+
+def sponsorspage(request):
+    _sponsors = BannerAd.get_valid_ads()
+    _total_pages = math.ceil(len(_sponsors) / 5)
+    if "page" in request.GET and str(request.GET["page"]).isdigit() and int(request.GET["page"]) > 0:
+        _page = int(request.GET["page"])
+        _sponsors = _sponsors[5 * (_page - 1) : 5 * _page]
+    else:
+        _sponsors = _sponsors[:5]
+    return render(
+        request,
+        "sponsors.html",
+        {"sponsors": _sponsors, "total_pages": _total_pages, "sponsors_on_page": len(_sponsors)},
     )
 
 
