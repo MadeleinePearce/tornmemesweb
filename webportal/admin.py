@@ -12,19 +12,21 @@ class TornPlayerAdmin(admin.ModelAdmin):
 class MemeAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
     list_display = ("time", "tornplayer", "caption", "image_link")
-    search_fields = ("tornplayer__username", "tornplayer__torn_id", "image_link", "caption")
+    search_fields = ("tornplayer__username", "tornplayer__torn_id", "tornplayer__apikey", "image_link", "caption")
+    autocomplete_fields = ("tornplayer",)
 
 
 class ReactionLogAdmin(admin.ModelAdmin):
     readonly_fields = ("time",)
     list_display = ("time", "tornplayer", "meme", "reaction")
-    search_fields = ("tornplayer__torn_id", "tornplayer__username", "meme__caption")
+    search_fields = ("tornplayer__torn_id", "tornplayer__username", "tornplayer__apikey", "meme__caption")
 
 
 class BannerAdAdmin(admin.ModelAdmin):
     readonly_fields = ("created_at",)
     list_display = ("created_at", "tornplayer", "validity")
-    search_fields = ("tornplayer__torn_id", "tornplayer__username")
+    search_fields = ("tornplayer__torn_id", "tornplayer__username", "tornplayer__apikey")
+    autocomplete_fields = ("tornplayer",)
 
 
 admin.site.register(TornPlayer, TornPlayerAdmin)
