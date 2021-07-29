@@ -67,8 +67,12 @@ class BannerAd(models.Model):
     redirect_link = models.URLField(verbose_name="Redirect URL")
     validity = models.PositiveIntegerField(verbose_name="Validity (Days)", default=1)
 
+    @property
+    def is_valid(self):
+        return timezone.now() <= self.created_at + datetime.timedelta(days=self.validity)
+    
     def __str__(self):
-        if timezone.now() > self.created_at + datetime.timedelta(days=self.validity):
+        if not self.is_valid:
             return f"AD-{self.id} ({self.tornplayer.username}) [EXPIRED]"
         else:
             _r = (self.created_at + datetime.timedelta(days=self.validity)) - timezone.now()
@@ -78,19 +82,11 @@ class BannerAd(models.Model):
     def get_valid_ads(n: int = None):
         if n:
             if len(BannerAd.objects.all()) > 1:
-                return random.choices(
-                    [
-                        ad
-                        for ad in BannerAd.objects.all()
-                        if timezone.now() <= ad.created_at + datetime.timedelta(days=ad.validity)
-                    ],
+                return random.sample(
+                    [ad for ad in BannerAd.objects.all() if ad.is_valid],
                     k=n,
                 )
             else:
                 return []
         else:
-            return [
-                ad
-                for ad in BannerAd.objects.all()
-                if timezone.now() <= ad.created_at + datetime.timedelta(days=ad.validity)
-            ]
+            return [ad for ad in BannerAd.objects.all() if ad.is_valid]
